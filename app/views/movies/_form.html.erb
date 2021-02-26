@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="field form-group">
+    <%= form.text_field :name, class:"form-control", placeholder:"Movie name" %>
   </div>
+  <br />
 
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.text_field :year %>
+  <div class="field form-group">
+    <%= form.text_field :year, class:"form-control", placeholder:"Movie year" %>
   </div>
+  <br />
 
-  <div class="field">
-    <%= form.label :genre %>
-    <%= form.text_field :genre %>
+  <div class="field form-group">
+    <%= form.text_field :genre, class:"form-control", placeholder:"Movie genre" %>
   </div>
+  <br />
 
-  <div class="field">
-    <%= form.label :director %>
-    <%= form.text_field :director %>
+  <div class="field form-group">
+    <%= form.text_field :director, class:"form-control", placeholder:"Movie director" %>
   </div>
+  <br />
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="field form-group">
+    <%= form.text_field :description, class:"form-control", placeholder:"Movie description" %>
   </div>
+  <br />
 
-  <div class="field">
-    <%= form.label :additional_information %>
-    <%= form.text_field :additional_information %>
+  <div class="field form-group">
+    <%= form.text_field :additional_information, class:"form-control", placeholder:"Additional information" %>
   </div>
+  <br />
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-secondary" %>
   </div>
 <% end %>

@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Movies and series list</h1>
 
-<table class="table table-hover">
-  <thead>
+<table class="table table-hover table-bordered">
+  <thead class="table-dark">
     <tr>
       <th>Name</th>
       <th>Year</th>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Movie', new_movie_path %>
+<%= link_to 'New Movie', new_movie_path, class:"btn btn-outline-secondary" %>
