@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /movies or /movies.json
   def index
@@ -12,7 +14,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/new
   def new
-    @movie = Movie.new
+    @movie = current_user.movies.build
   end
 
   # GET /movies/1/edit
@@ -21,7 +23,7 @@ class MoviesController < ApplicationController
 
   # POST /movies or /movies.json
   def create
-    @movie = Movie.new(movie_params)
+    @movie = current_user.movies.build(movie_params)
 
     respond_to do |format|
       if @movie.save
@@ -56,6 +58,12 @@ class MoviesController < ApplicationController
     end
   end
 
+  def correct_user
+    @movie = current_user.movies.find_by(id: params[:id])
+    redirect_to movies_path, notice: "Not authorized to edit" if @movie.nil?
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
@@ -63,7 +71,8 @@ class MoviesController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # params are form fields
     def movie_params
-      params.require(:movie).permit(:name, :year, :genre, :director, :description, :additional_information)
+      params.require(:movie).permit(:name, :year, :genre, :director, :description, :additional_information, :user_id)
     end
 end
